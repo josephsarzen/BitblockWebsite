@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/NavBar/NavBar';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './components/HomePage/HomePage'
+import WhitePaper from './components/WhitePaper/WhitePaper';
+import { MDBContainer } from 'mdb-react-ui-kit';
+import BrowseVideos from './components/BrowseVideos/BrowseVideos';
+import UploadVideo from './components/UploadVideo/UploadVideo';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <NavBar />
+        <MDBContainer style={{paddingTop: 70}}>
+        <Routes>
+          <Route path='/' element={<HomePage />}/>
+          <Route path='/whitepaper' element={<WhitePaper />}/>
+          <Route path='/upload' element={<UploadVideo />}/>
+          <Route path='/browse' element={<BrowseVideos />}/>
+        </Routes>
+        </MDBContainer>
+    </BrowserRouter>
   );
 }
 
